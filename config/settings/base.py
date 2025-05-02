@@ -22,12 +22,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-p#e+z*&ld7-m-2#7mumqxoimdlouehz-8*+42gmbyrp2u@0n-9'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.pythonanywhere.com']
-
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -37,6 +31,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'apps.branches',
+    'apps.members',
 ]
 
 MIDDLEWARE = [
@@ -49,7 +45,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'sisegu.urls'
+ROOT_URLCONF = 'config.urls'
 
 TEMPLATES = [
     {
@@ -67,7 +63,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'sisegu.wsgi.application'
+WSGI_APPLICATION = 'config.wsgi.application'
 
 
 # Database
