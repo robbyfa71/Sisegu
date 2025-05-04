@@ -1,43 +1,43 @@
 {% extends "_base.html" %}
-{% block title %}Cabang Latihan{% endblock %}
+{% block title %}Keanggotaan{% endblock %}
 
 {% block content %}
 <!-- Page Heading -->
-<h1 class="text-2xl font-semibold">Cabang Latihan</h1>
+<h1 class="text-2xl font-semibold">Keanggotaan</h1>
+
 
 <div class="relative overflow-x-auto mt-5">
     <table class="w-full text-sm text-left rtl:text-right text-gray-500">
         <thead class="text-xs text-gray-700 uppercase bg-blue-50">
             <tr>
                 <th scope="col" class="px-6 py-3">
-                    Nama Cabang
+                    Nama
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Nomor Penanggung Jawab
+                    Cabang Latihan
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Status
+                    Tingkatan Sabuk
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Tanggal Terbentuk
+                    Tahun Bergabung
                 </th>
             </tr>
         </thead>
         <tbody>
-            {% for branch in branches %}
+            {% for member in members %}
             <tr class="bg-white border-b border-gray-200">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                    {{ branch.name }}
+                    {{ member.name }}
                 </th>
                 <td class="px-6 py-4">
-                    {{ branch.phone_number }}
+                    {{ member.branch }}
                 </td>
                 <td class="px-6 py-4">
-                    {% if branch.status %}<span class="bg-green-400 p-1 xs:text-xs text-white">Aktif</span>{% else %} <span class="bg-red-400 xs:text-xs p-1 text-white">Tidak Aktif</span>{% endif %}
-                    
+                    {{ member.get_tier_display }}
                 </td>
                 <td class="px-6 py-4">
-                    {{ branch.created_date }}
+                    {{ member.years_of_joining }}
                 </td>
             </tr>
             {% endfor %}
