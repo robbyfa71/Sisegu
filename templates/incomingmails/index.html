@@ -1,0 +1,79 @@
+{% extends "_base.html" %}
+{% block title %}Administrasi{% endblock %}
+
+{% block content %}
+<!-- Page Heading -->
+<h1 class="text-2xl font-semibold">Manajemen Administrasi</h1>
+
+<!-- Tabs -->
+<div class="text-sm font-medium text-center text-gray-500 border-b mt-5 border-gray-200">
+    <ul class="flex flex-wrap -mb-px">
+        <li class="me-2">
+            <a href="/outgoingmails" class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 active">Surat Keluar</a>
+        </li>
+        <li class="me-2">
+            <a href="#" class="inline-block p-4 text-red-600 border-b-2 border-red-600 rounded-t-lg " aria-current="page">Surat Masuk</a>
+            </li>
+    </ul>
+</div>
+
+    <div class="grid grid-cols-1 py-4 md:grid-cols-3 gap-2 ">
+        <div>   
+            <label for="search" class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
+            <div class="relative">
+                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                    <svg class="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                    </svg>
+                </div>
+                <input type="search" id="search" class="block w-full p-2.5 ps-10 text-xs text-gray-900 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Cari nomor surat" required />
+                <button type="submit" class="text-white absolute end-2.5 bottom-1.5 bg-yellow-400 hover:bg-yellow-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs px-4 py-1">Cari</button>
+            </div>
+        </div>
+        <div">
+            <button type="button" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-xs px-5 py-2.5">Tambah Surat</button>
+        </div>
+    </div>
+    
+    
+<!-- table -->
+<div class="relative overflow-x-auto">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+        <thead class="text-xs text-gray-700 uppercase bg-blue-50">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    Nomor Surat
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Jenis Surat
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Pengirim
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Tanggal Terima
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for inmail in incomingmails %}
+            <tr class="bg-white border-b border-gray-200">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                    {{ inmail.mail_number }}
+                </th>
+                <td class="px-6 py-4">
+                    {{ inmail.get_mail_type_display }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ inmail.sender }}      
+                </td>
+                <td class="px-6 py-4">
+                    {{ inmail.created_date }}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+    
+{% endblock content %}
