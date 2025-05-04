@@ -21,6 +21,17 @@ class Tier(models.IntegerChoices):
     PENDEKAR_M4 = 13, 'Pendekar Utama'
     PENDEKAR_M5 = 14, 'Pendekar Besar'
 
+# Mail type mapping
+class MailType(models.IntegerChoices):
+    UNDANGAN = 1, 'Undangan'
+    SK = 2, 'Surat Keputusan'
+    PERINTAH = 3, 'Surat Perintah'
+    PERMOHONAN = 4, 'Surat Permohonan'
+    PEMBERITAHUAN = 5, 'Surat Pemberitahuan'
+    PROPOSAL = 6, 'Proposal'
+    PEMINJAMAN= 7, 'Surat Peminjaman'
+
+
 # Branches Model.
 class Branches(models.Model):
     name = models.CharField(max_length=70)
@@ -30,17 +41,63 @@ class Branches(models.Model):
     created_date = models.DateTimeField(default=timezone.now)
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=SET_NULL, null = True)
 
+    class Meta:
+        verbose_name_plural="Branches"
+
     def __str__(self):
         return self.name #menampilkan nama
 
 
-# Create your models here.
+# members model
 class Members(models.Model):
     name = models.CharField(max_length=150)
     birth_date = models.DateField()
     branch = models.ForeignKey(Branches, on_delete=models.SET_NULL, null=True)
     tier = models.IntegerField(choices=Tier.choices, default=Tier.SISWA_M1)
     years_of_joining = models.CharField(max_length=4, null=False, blank=False)
+
+    class Meta:
+        verbose_name="Member"
+
+    def __str__(self):
+        return self.name #menampilkan nama
+
+
+# mails model
+class OutgoingMail(models.Model):
+    mail_type = models.IntegerField(choices=MailType.choices, default=MailType.UNDANGAN)
+    mail_number = models.CharField(max_length=50, blank=True)
+    subject = models.CharField(max_length=150, blank=False)
+    recipient = models.CharField(max_length=150, blank=True)
+    event_name = models.CharField(max_length=150, blank=False)
+    event_location = models.CharField(max_length=150, blank=True, )
+    event_Date = models.DateTimeField(null=True, blank=True) # perlu ubah Date menjadi date
+    signed_by=models.CharField(max_length=80, blank=False)
+    signed_date=models.DateField(null=False, blank=False)
+    created_date=models.DateTimeField(default=timezone.now)
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=SET_NULL, null=True)
+
+    class Meta:
+        verbose_name_plural='Outgoing Mails'
+
+
+    def __str__(self):
+        return self.subject #menampilkan subjek surat
+
+class IncomingMail(models.Model):
+    mail_type = models.IntegerField(choices=MailType.choices, default=MailType.UNDANGAN)
+    mail_number = models.CharField(max_length=50, blank=True)
+    mail_purpose = models.TextField(blank=True)
+    sender = models.CharField(max_length=150, blank=False)
+    created_date=models.DateTimeField(default=timezone.now)
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=SET_NULL, null=True)
+
+    class Meta:
+        verbose_name_plural = 'Incoming Mails'
+    
+    def __str__(self):
+        return self.sender #menampilkan pengirim surat
+
 
 
 
