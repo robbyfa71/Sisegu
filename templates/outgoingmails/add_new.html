@@ -1,0 +1,51 @@
+{% extends "_base.html" %}
+{% block title %}Buat Surat{% endblock %}
+
+{% block content %}
+<h1 class="text-2xl font-semibold">Buat Surat</h1>
+
+<form method="POST" action="" class="max-w-2xl">
+    {% csrf_token %}
+    <div class="mt-5">
+        <label for="small-input" class="block mb-2 text-sm font-normal text-gray-900">Jenis Surat</label>
+        {{ form.mail_type }}
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-3">
+            <div>
+                <label for="small-input" class="block mb-2 text-sm font-normal text-gray-900">Nomor Surat</label>
+                {{ form.mail_number }}
+            </div>
+            <div>
+                <label for="small-input" class="block mb-2 text-sm font-normal text-gray-900">Perihal</label>
+                {{ form.subject }}
+            </div>
+            <div>
+                <label for="small-input" class="block mb-2 text-sm font-normal text-gray-900">Kepada</label>
+                {{ form.recipient }}
+            </div>
+            <div>
+                <label for="small-input" class="block mb-2 text-sm font-normal text-gray-900">Tanggal Acara</label>
+                {{ form.event_Date }}
+            </div>
+            <div>
+                <label for="small-input" class="block mb-2 text-sm font-normal text-gray-900">Nama Acara</label>
+                {{ form.event_name }}
+            </div>
+            <div>
+                <label for="small-input" class="block mb-2 text-sm font-normal text-gray-900">Lokasi Acara</label>
+                {{ form.event_location }}
+            </div>
+            <div>
+                <label for="small-input" class="block mb-2 text-sm font-normal text-gray-900">Nama Penanda Tangan</label>
+                {{ form.signed_by }}
+            </div>
+            <div>
+                <label for="small-input" class="block mb-2 text-sm font-normal text-gray-900">Tanggal Tanda Tangan</label>
+                {{ form.signed_date }}
+            </div>
+        </div>
+    </div>
+    <div class="flex justify-end mt-5">
+        <button type="submit" class="text-white bg-blue-600 border border-blue-300 focus:outline-none hover:bg-blue-700 focus:ring-4 focus:ring-blue-100 font-medium rounded-lg text-xs px-5 py-2.5">Tambah Surat</button>
+    </div>
+</form>
+{% endblock content %}
