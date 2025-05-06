@@ -1,16 +1,19 @@
 from django.utils import timezone
 from django.shortcuts import redirect, render
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from .models import Branches, Members, OutgoingMail, IncomingMail
 from .forms import AddOutgoingMailForm
 
 # Branches
+@login_required
 def branches_index (request):
     #get all branch
     branches = Branches.objects.all()
     return render(request, 'branches/index.html', {'branches':branches})
 
 # Members
+@login_required
 def members_index (request):
     #get all members
     members = Members.objects.all()
@@ -18,13 +21,14 @@ def members_index (request):
 
 
 # mails
+@login_required
 def outgoingmails_index(request):
     #get all ougoing mails
     outgoingmails = OutgoingMail.objects.all()
     return render(request, 'outgoingmails/index.html',{'outgoingmails':outgoingmails})
 
+@login_required
 def outgoingmails_add(request):
-
     if request.method == 'POST':
         #get form data
         outgoingmail_form = AddOutgoingMailForm(request.POST)
@@ -45,7 +49,7 @@ def outgoingmails_add(request):
             
     return render(request, 'outgoingmails/add_new.html',{'form': outgoingmail_form})
 
-
+@login_required
 def incomingmails_index(request):
     #get all ougoing mails
     incomingmails = IncomingMail.objects.all()

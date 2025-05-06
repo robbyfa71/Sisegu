@@ -25,7 +25,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent #parent == back directo
 SECRET_KEY = 'django-insecure-p#e+z*&ld7-m-2#7mumqxoimdlouehz-8*+42gmbyrp2u@0n-9'
 
 
-
+#Login Url
+LOGIN_URL = '/'
 
 # Application definition
 
@@ -38,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'compressor',
     'apps.administration',
+    'apps.dashboard',
 ]
 
 
