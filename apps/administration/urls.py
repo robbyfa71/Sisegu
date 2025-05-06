@@ -4,7 +4,7 @@ from . import views
 app_name='administration'
 
 urlpatterns = [
-    path('', views.branches_index, name='branch_index'),
+    path('branch/', views.branches_index, name='branch_index'),
     path('members/', views.members_index, name='members_index'),
     path('outgoingmails/', views.outgoingmails_index, name='outgoingmails_index'),
     path('outgoingmails/add/', views.outgoingmails_add, name='outgoingmails_add'),
