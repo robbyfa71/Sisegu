@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class AdministrationConfig(AppConfig):
+class DashboardConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'apps.administration'
+    name = 'sisegu.apps.employee.dashboard'

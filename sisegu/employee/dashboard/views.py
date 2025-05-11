@@ -15,17 +15,17 @@ def login_view(request):
         authform = AuthenticationForm(request, data=request.POST)
         if authform.is_valid():
             login(request, authform.get_user())
-            return redirect('dashboard:dashboard')
+            return redirect('dashboard:index')
         else:
             error_message = 'Username atau password yang anda masukkan salah!'
     else:
         authform = AuthenticationForm()
-    return render(request,'login.html',{'form':authform, 'error':error_message})
+    return render(request,'employee/login.html',{'form':authform, 'error':error_message})
 
 
 @login_required
 def index_view(request):
-    return render(request, 'dashboard/index.html',{})
+    return render(request, 'employee/dashboard/index.html',{})
 
 
 def logout_view(request):

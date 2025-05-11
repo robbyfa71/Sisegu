@@ -2,7 +2,7 @@ from django.utils import timezone
 from django.shortcuts import redirect, render
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .models import Branches, Members, OutgoingMail, IncomingMail
+from sisegu.apps.employee.administration.models import Branches, Members, OutgoingMail, IncomingMail
 from .forms import AddOutgoingMailForm
 
 # Branches
@@ -10,14 +10,14 @@ from .forms import AddOutgoingMailForm
 def branches_index (request):
     #get all branch
     branches = Branches.objects.all()
-    return render(request, 'branches/index.html', {'branches':branches})
+    return render(request, 'employee/branches/index.html', {'branches':branches})
 
 # Members
 @login_required
 def members_index (request):
     #get all members
     members = Members.objects.all()
-    return render(request, 'members/index.html', {'members':members})
+    return render(request, 'employee/members/index.html', {'members':members})
 
 
 # mails
@@ -25,7 +25,11 @@ def members_index (request):
 def outgoingmails_index(request):
     #get all ougoing mails
     outgoingmails = OutgoingMail.objects.all()
-    return render(request, 'outgoingmails/index.html',{'outgoingmails':outgoingmails})
+    context = {
+        'outgoingmails': outgoingmails,
+        'current_tab': 'outgoingmails'
+    }
+    return render(request, 'employee/mails/outgoingmails/index.html', context)
 
 @login_required
 def outgoingmails_add(request):
@@ -47,10 +51,15 @@ def outgoingmails_add(request):
     else:
         outgoingmail_form = AddOutgoingMailForm()
             
-    return render(request, 'outgoingmails/add_new.html',{'form': outgoingmail_form})
+    return render(request, 'employee/mails/outgoingmails/add_new.html',{'form': outgoingmail_form})
 
 @login_required
 def incomingmails_index(request):
     #get all ougoing mails
     incomingmails = IncomingMail.objects.all()
-    return render(request, 'incomingmails/index.html',{'incomingmails':incomingmails})
+    context = {
+        'incomingmails': incomingmails,
+        'current_tab': 'incomingmails'
+
+    }
+    return render(request, 'employee/mails/incomingmails/index.html',context)

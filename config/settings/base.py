@@ -38,8 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'compressor',
-    'apps.administration',
-    'apps.dashboard',
+    #employee (administrator)
+    'sisegu.apps.employee.administration',
+    'sisegu.apps.employee.dashboard',
 ]
 
 
