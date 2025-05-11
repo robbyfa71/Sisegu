@@ -1,21 +1,21 @@
 from django.shortcuts import redirect, render
-from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib import messages
 
 # Create your views here.
 
 def login_view(request):
     error_message = None
     if request.user.is_authenticated:
-        return redirect('dashboard:dashboard')
+        return redirect('dashboard:index')
 
     if request.method == 'POST':
         authform = AuthenticationForm(request, data=request.POST)
         if authform.is_valid():
             login(request, authform.get_user())
-            return redirect('dashboard:index')
+            next_url = request.GET.get('next')
+            return redirect(next_url)
         else:
             error_message = 'Username atau password yang anda masukkan salah!'
     else:

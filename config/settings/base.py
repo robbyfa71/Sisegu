@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-p#e+z*&ld7-m-2#7mumqxoimdlouehz-8*+42gmbyrp2u@0n-9
 
 
 #Login Url
-LOGIN_URL = '/'
+LOGIN_URL = '/employee'
 
 # Application definition
 
