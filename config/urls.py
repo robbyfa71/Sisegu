@@ -22,6 +22,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('apps.dashboard.urls', namespace='dashboard')),
-    path('administration/', include('apps.administration.urls', namespace='administration'))
+    path('', include('sisegu.employee.dashboard.urls', namespace='dashboard')),
+    path('administration/', include('sisegu.employee.administration.urls', namespace='administration'))
 ]

@@ -1,5 +1,5 @@
 from django import forms
-from .models import Branches, Members, OutgoingMail, IncomingMail
+from sisegu.apps.employee.administration.models import Branches, Members, OutgoingMail, IncomingMail
 
 
 INPUT_CLASS = 'block w-full p-2 text-xs text-gray-900 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500'

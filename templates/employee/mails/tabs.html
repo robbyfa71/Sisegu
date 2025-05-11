@@ -1,0 +1,23 @@
+<!-- Tabs -->
+<div class="text-sm font-medium text-center text-gray-500 border-b mt-5 border-gray-200">
+    <ul class="flex flex-wrap -mb-px">
+        <li class="me-2">
+            <a href="{% url 'administration:outgoingmails_index' %}"
+            class="inline-block p-4 border-b-2 rounded-t-lg
+            {% if current_tab == 'outgoingmails' %}
+                text-red-600 border-red-600 
+            {% else %}
+                border-transparent hover:text-gray-600 hover:border-gray-300
+            {% endif %}" aria-current="page">Surat Keluar</a>
+        </li>
+        <li class="me-2">
+            <a href="{% url 'administration:incomingmails_index' %}"
+            class="inline-block p-4 border-b-2 rounded-t-lg
+            {% if current_tab == 'incomingmails' %}
+                text-red-600 border-red-600 
+            {% else %}
+                border-transparent hover:text-gray-600 hover:border-gray-300
+            {% endif %}" aria-current="page">Surat Masuk</a>
+        </li>
+    </ul>
+</div>
