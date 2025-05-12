@@ -12,8 +12,10 @@
     {% compress css %}
     <link rel="stylesheet" href="{% static 'src/output.css' %}" />
     {% endcompress %}
+    {% block extra_css %}
+    {% endblock %}
   </head>
-  <body class="bg-red-600">
+  <body class="bg-red-800">
     {% block content %}
     {% endblock %}
     <!-- flowbite js cdn -->

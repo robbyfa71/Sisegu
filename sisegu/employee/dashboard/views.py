@@ -15,7 +15,10 @@ def login_view(request):
         if authform.is_valid():
             login(request, authform.get_user())
             next_url = request.GET.get('next')
-            return redirect(next_url)
+            if next_url:
+                return redirect(next_url)
+            else:
+                return redirect('dashboard:index')
         else:
             error_message = 'Username atau password yang anda masukkan salah!'
     else:
