@@ -76,7 +76,9 @@
             {% for outmail in outgoingmails %}
             <tr class="bg-white border-b border-gray-200">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                    {{ outmail.mail_number }}
+                    <a href="{% url 'administration:outgoingmails_detail' outmail.id %}">
+                        {{ outmail.mail_number }}
+                    </a>
                 </th>
                 <td class="px-6 py-4">
                     {{ outmail.get_mail_type_display }}

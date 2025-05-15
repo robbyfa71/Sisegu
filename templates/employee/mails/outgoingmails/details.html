@@ -1,0 +1,57 @@
+{% extends "employee/_base.html" %}
+{% block title %}Detail Surat{% endblock %}
+{% load date_time_filters %}
+
+{% block content %}
+<div class="container">
+    <div class="text-end">
+        <a href="#" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-xs p-2 text-center inline-flex items-center">
+            <svg class="w-4 h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z"/>
+            </svg>
+            <span>Edit</span>
+        </a>
+    </div>
+    <div class="shadow-lg p-5 mt-5">
+        <div class="grid grid-cols-2 max-w-xs">
+            <p>Nomor</p>
+            <p>: {{ detail.mail_number }}</p>
+            <p>Lampiran</p>
+            <p>: 1 halaman</p>
+            <p>Perihal</p>
+            <p>: {{ detail.subject }}</p>
+        </div>
+        <div class="mt-5">
+            <p>Kepada Yth</p>
+            <p class="font-medium">{{ detail.recipient }}</p>
+            <p>Di Tempat</p>
+        </div>
+        <!-- Body -->
+        <div class="mt-5">
+            <p class="font-medium mb-5">Assalamualaikum Wr. Wb</p>
+            <p class="text-justify md:max-w-3xl">
+                Segala puji bagi Allah SWT, 
+                tiada kata yang patut kita ucapkan kecuali rasa syukur 
+                yang selalu kita panjatkan kepada-Nya.
+                Sehubungan dengan akan dilaksanakannya 
+                <span class="font-medium">{{ detail.event_name }}</span>
+                yang akan dilaksanakan pada :
+            </p>
+            <div class="grid grid-cols-2 mt-2 max-w-md">
+                <p>Tanggal</p>
+                <p>: {{ detail.event_Date|tanggal_lengkap }}</p>
+                <p>Waktu</p>
+                <p>: {{ detail.event_Date|jam_menit }} WITA</p>
+                <p>Tempat</p>
+                <p>: {{ detail.event_location }}</p>
+            </div>
+            <p class="text-justify mt-2 md:max-w-3xl">
+                Maka dengan ini, kami berharap agar kiranya yang bersangkutan dapat hadir atau mengirimkan perwakilan pada acara tersebut. Demikian surat ini kami sampaikan, atas 
+                perhatian dan kesediaannya kami ucapkan jazakumullahkhoiron katsiron.
+            </p>
+            <p class="font-medium mt-5">Wassalamualaikum Wr. Wb </p>
+        </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

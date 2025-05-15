@@ -58,13 +58,16 @@ class AddOutgoingMailForm(forms.ModelForm):
                 'name':'event_location',
                 'required':'required',
             }),
-            'event_Date': forms.TextInput(attrs={
-                'type':'date',
+            'event_Date': forms.DateTimeInput(
+                attrs={
+                'type':'datetime-local',
                 'class':INPUT_CLASS,
                 'id':'small-input',
                 'name':'event_Date',
                 'required':'required',
-            }),
+                },
+                format='%Y-%m-%dT%H:%M'
+            ),
             'signed_by': forms.TextInput(attrs={
                 'type':'text',
                 'class':INPUT_CLASS,
