@@ -1,5 +1,5 @@
 from django.utils import timezone
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from sisegu.apps.employee.administration.models import Branches, Members, OutgoingMail, IncomingMail
@@ -52,6 +52,15 @@ def outgoingmails_add(request):
         outgoingmail_form = AddOutgoingMailForm()
             
     return render(request, 'employee/mails/outgoingmails/add_new.html',{'form': outgoingmail_form})
+
+@login_required
+def outgoingmails_detail(request, id):
+    #get outgoing mail by id
+    detail = get_object_or_404(OutgoingMail, id=id)
+    context = {
+        'detail':detail,
+    }
+    return render(request, 'employee/mails/outgoingmails/details.html',context)
 
 @login_required
 def incomingmails_index(request):
