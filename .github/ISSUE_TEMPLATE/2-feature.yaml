@@ -1,0 +1,38 @@
+name: 💡New Feature or Enhancement
+description: Create a request for new feature or enhancement here, and please kindly follows the format on the placeholder
+labels: 'enhancements'
+body:
+  - type: textarea
+    id: objective
+    attributes:
+      label: Objective/s
+      description: A clear and concise description of what you want to achieve with this feature or enhancement.
+      placeholder: |-
+        I want this feature to solve [a] and [b]
+    validations:
+      required: true 
+  - type: textarea
+    id: requirement
+    attributes:
+      label: Technical Requirement/s
+      description: Elaborate the requirement and how we can achieve it.
+      placeholder: |-
+        - [ ] Create a field `foo` in model `Bar`
+        - [ ] Add Bar index view
+        - [ ] Add Bar detail view
+    validations:
+      required: true 
+  - type: textarea
+    id: extras
+    attributes:
+      label: Screenshot, Screenrecord & Other Attachment/s
+      description: If there's any, add screenshots or mockup for this new feature or enhancement. 
+      placeholder: Put your attachments here
+    validations:
+      required: false
+  - type: markdown
+    attributes:
+      value: |-
+        Make sure that you also assign the Developer, Project, and other details after you submit the issue. Thankies!🙏
+    validations:
+      required: false
