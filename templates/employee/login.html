@@ -15,8 +15,8 @@
   <body>
     <form method="POST">
         {% csrf_token %}
-        <div class="max-w-md mx-auto p-5">
-            <img class="w-50 mx-auto md:w-80" src="https://2.bp.blogspot.com/-ociusXJxs6s/Wg0i1c75RVI/AAAAAAAAE_Q/qjLtSi8GEy02XVPrC-__-dSK1YEqT7aPQCLcBGAs/s1600/Tapak%2BSUci.png" alt="Logo">
+        <div class="max-w-md mx-auto p-5 mt-20">
+            <img class="w-50 mx-auto md:w-40" src="{% static 'img/tspng.png' %}" alt="Logo">
             <h1 class="text-3xl font-bold mb-5">Login</h1>
             <div class="mb-5">
                 <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Username</label>
