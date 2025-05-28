@@ -1,0 +1,55 @@
+name: 🐞 Report a Bug
+description: Found any weird behavior that's not working the way we (probably) intend? Report it here
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: links
+    attributes:
+      label: Sentry/Crashlytics/JAM Link/s
+      description: Put links from 3rd party if theres any
+      placeholder: |-
+        e.g. https://sentry.io/issues/5427223372/?alert_rule_id=1162837
+    validations:
+      required: false
+  - type: textarea
+    id: desc
+    attributes:
+      label: Issue Description
+      description: Description of what the bug is about.
+      placeholder: |-
+        Explain the bug here
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to Reproduce
+      description: A clear and concise steps to replicate the issue
+      placeholder: |-
+        1. What you did [x]
+        2. To get [y]
+        3. The issue [z]
+        4. etc.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected vs Actual Result
+      description: Elaborate your expectations and actual result. Just follow the table format below.
+      value: |-
+        Expected | Actual
+        -- | --
+        Expected Result | Actual Result
+    validations:
+      required: true
+  - type: textarea
+    id: extras
+    attributes:
+      label: Screenshot, Screenrecord & Other Attachment/s
+      description: If applicable, add attachment to help explain your problem.
+      placeholder: |-
+        Put your attachment here
+    validations:
+      required: false
